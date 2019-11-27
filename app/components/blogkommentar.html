@@ -1,0 +1,46 @@
+<style>
+    .username {
+        font-family: monospace;
+        font-size: 1em;
+        font-weight: normal;
+        place-self: center;
+        padding: 1px 3px;
+        background-color: #f5f5f5;
+        box-shadow: 0 0 2px #000000;
+    }
+
+    .eintrag p {
+        font-size: .8em;
+        font-weight: normal;
+        margin: 0;
+        margin-bottom: 4px;
+        width: 100%;
+    }
+
+    .kommSection {
+        padding-left: 1em;
+        border-left: #666666 solid 1.3px;
+    }
+</style>
+<div class="eintrag">
+    <div class="" layout="row" layout-align="space-between center">
+        <div class="username"
+             ng-bind="$ctrl.eintrag.username">
+        </div>
+        <md-button class="md-icon-button"
+                   ng-click="$ctrl.setAddKomm()">
+            <md-icon>comment</md-icon>
+        </md-button>
+    </div>
+    <p ng-bind="$ctrl.eintrag.text"></p>
+    <addkommentar ng-show="$ctrl.addkomm"
+                  on-add-kommtentar="$ctrl.valAddKomm(user, text)">
+    </addkommentar>
+    <div class="kommSection">
+        <ng-transclude></ng-transclude>
+        <blogkommentar ng-repeat="$e in $ctrl.eintrag.kommentare"
+                       eintrag-data="$e"
+                       on-change="$ctrl.onChange()">
+        </blogkommentar>
+    </div>
+</div>

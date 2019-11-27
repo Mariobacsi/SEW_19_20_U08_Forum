@@ -1,0 +1,21 @@
+<div layout-padding>
+    <md-card layout-padding class="md-whiteframe-4dp">
+        <h1 ng-bind="$ctrl.eintrag.username"></h1>
+        <div layout="row" layout-align="space-between center">
+            <p ng-bind="$ctrl.eintrag.text"></p>
+            <md-button class="md-icon-button"
+                       ng-click="$ctrl.setAddKomm()">
+                <md-icon>comment</md-icon>
+            </md-button>
+        </div>
+        <addkommentar ng-show="$ctrl.addkomm"
+                      on-add-kommtentar="$ctrl.valAddKomm(user, text)"></addkommentar>
+    </md-card>
+    <md-card layout-padding class="md-whiteframe-4dp">
+        <ng-transclude></ng-transclude>
+        <blogkommentar ng-repeat="$e in $ctrl.eintrag.kommentare"
+                       eintrag-data="$e"
+                       on-change="$ctrl.safeToLocal()">
+        </blogkommentar>
+    </md-card>
+</div>

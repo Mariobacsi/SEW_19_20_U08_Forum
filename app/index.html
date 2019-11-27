@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="de" ng-app="Vorlage">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-    <title>Vorlage</title>
+
+    <title>Blogeintrag</title>
     <link rel="icon" href="favicon.ico">
-  
+
     <link rel="stylesheet" href="vendor/material-icons-3.0.1/material-icons.css">
     <link rel="stylesheet" href="vendor/roboto/roboto.css">
-  
+
     <link rel="stylesheet" href="vendor/angular-material-1.1.19/angular-material.min.css">
-  
+
     <link rel="stylesheet" href="app.css">
 
     <script src="vendor/default-passive-events.js"></script>
@@ -29,15 +29,33 @@
 
     <script src="vendor/angular-material-1.1.19/angular-material.min.js"></script>
     <script src="vendor/angular-ui-router-1.0.22/angular-ui-router.min.js"></script>
-  
+
     <script src="app.js"></script>
     <script src="models/seite.js"></script>
-  </head>
 
-  <body layout="column" ng-cloak>
-    <md-content class="md-padding">
-      <h1>Vorlage  <i class="material-icons">content_paste</i> für ein AngularJS Material-Projekt</h1>
-    </md-content>
-  </body>
+    <script src="components/addkommentar.js"></script>
+    <script src="components/blog.js"></script>
+    <script src="components/blogkommentar.js"></script>
+
+    <script src="models/beitrag.js"></script>
+</head>
+
+<body layout="column" ng-cloak>
+<blog title="Hallo Welt!"
+      text="Hier ist alles Super">
+    <blogkommentar username="Mariobacsi"
+                   text="Hallo mein name ist Mario">
+        <blogkommentar username="[Insert Name]"
+                       text="Hallo Welt!">
+            <blogkommentar username="Lappen"
+                           text="HaLLo WeLT!!">
+            </blogkommentar>
+        </blogkommentar>
+    </blogkommentar>
+    <blogkommentar username="[Insert Name]"
+                   text="[Insert Text]">
+    </blogkommentar>
+</blog>
+</body>
 
 </html>
