@@ -6,8 +6,7 @@ app.component("blog", {
     bindings: {
         title: "@",
         text: "@"
-    },
-    transclude: true
+    }
 });
 
 
@@ -15,27 +14,22 @@ app.controller("BlogController", function ($log, Beitrag) {
 
     this.$onInit = function () {
         this.eintrag = new Beitrag(this.title, this.text);
+        console.log("Init Blog: \n");
+        console.log(this.eintrag)
     };
-
-    this.addkomm = false;
 
     this.valAddKomm = (u, t) => {
         if ((u, t) == undefined || (u, t) == "") {
             $log.debug("Eintrag war leer");
         } else {
-            let e = new Beitrag(u, t);
-            this.eintrag.kommentare.push(e);
+            this.eintrag.kommentieren(u, t);
             $log.debug(this.eintrag);
             this.safeToLocal();
         }
-        this.setAddKomm();
+        this.eintrag.setAddKomm();
     }
 
     this.safeToLocal = () => {
-        localStorage.setItem('Data', JSON.stringify(this.eintrag));
-    }
-
-    this.setAddKomm = () => {
-        this.addkomm = !this.addkomm;
+        localStorage.setItem('Blog', JSON.stringify(this.eintrag));
     }
 });

@@ -28,18 +28,18 @@
              ng-bind="$ctrl.eintrag.username">
         </div>
         <md-button class="md-icon-button"
-                   ng-click="$ctrl.setAddKomm()">
+                   ng-click="$ctrl.eintrag.setAddKomm()">
             <md-icon>comment</md-icon>
         </md-button>
     </div>
     <p ng-bind="$ctrl.eintrag.text"></p>
-    <addkommentar ng-show="$ctrl.addkomm"
+    <addkommentar ng-show="$ctrl.eintrag.addkomm"
                   on-add-kommtentar="$ctrl.valAddKomm(user, text)">
     </addkommentar>
     <div class="kommSection">
         <ng-transclude></ng-transclude>
         <blogkommentar ng-repeat="$e in $ctrl.eintrag.kommentare"
-                       eintrag-data="$e"
+                       eintrag="$e"
                        on-change="$ctrl.onChange()">
         </blogkommentar>
     </div>

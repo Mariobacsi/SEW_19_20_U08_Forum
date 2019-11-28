@@ -4,17 +4,17 @@
         <div layout="row" layout-align="space-between center">
             <p ng-bind="$ctrl.eintrag.text"></p>
             <md-button class="md-icon-button"
-                       ng-click="$ctrl.setAddKomm()">
+                       ng-click="$ctrl.eintrag.setAddKomm()">
                 <md-icon>comment</md-icon>
             </md-button>
         </div>
-        <addkommentar ng-show="$ctrl.addkomm"
-                      on-add-kommtentar="$ctrl.valAddKomm(user, text)"></addkommentar>
+        <addkommentar ng-show="$ctrl.eintrag.addkomm"
+                      on-add-kommtentar="$ctrl.valAddKomm(user, text)">
+        </addkommentar>
     </md-card>
-    <md-card layout-padding class="md-whiteframe-4dp">
-        <ng-transclude></ng-transclude>
+    <md-card layout-padding class="md-whiteframe-4dp" ng-show="$ctrl.eintrag.kommentare.length">
         <blogkommentar ng-repeat="$e in $ctrl.eintrag.kommentare"
-                       eintrag-data="$e"
+                       eintrag="$e"
                        on-change="$ctrl.safeToLocal()">
         </blogkommentar>
     </md-card>
