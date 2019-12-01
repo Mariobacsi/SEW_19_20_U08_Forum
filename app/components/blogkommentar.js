@@ -5,7 +5,8 @@ app.component("blogkommentar", {
     controller: "BlogkommentarController",
     bindings: {
         eintrag: "<",
-        onChange: "&"
+        onChange: "&",
+        deleteSelf: "&"
     },
     transclude: true
 });
@@ -14,7 +15,6 @@ app.component("blogkommentar", {
 app.controller("BlogkommentarController", function ($log, Beitrag) {
 
     this.$onInit = function () {
-        console.log(this.eintrag);
     };
 
     this.valAddKomm = (u, t) => {
@@ -23,9 +23,17 @@ app.controller("BlogkommentarController", function ($log, Beitrag) {
         } else {
             this.eintrag.kommentieren(u, t);
             $log.debug(this.eintrag);
-            this.onChange();
+            this.safeToLocal();
         }
         this.eintrag.setAddKomm();
     }
+
+    this.safeToLocal = () => {
+        this.onChange();
+    };
+
+    /*this.del = (obj) => {
+        this.eintrag.kommentare.remove(obj);
+    }*/
 
 });

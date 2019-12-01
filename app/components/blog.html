@@ -1,3 +1,6 @@
+<style>
+
+</style>
 <div layout-padding>
     <md-card layout-padding class="md-whiteframe-4dp">
         <h1 ng-bind="$ctrl.eintrag.username"></h1>
@@ -12,7 +15,7 @@
                       on-add-kommtentar="$ctrl.valAddKomm(user, text)">
         </addkommentar>
     </md-card>
-    <md-card layout-padding class="md-whiteframe-4dp" ng-show="$ctrl.eintrag.kommentare.length">
+    <md-card id="kommentar-section" layout-padding class="md-whiteframe-4dp" ng-show="$ctrl.eintrag.kommentare.length">
         <blogkommentar ng-repeat="$e in $ctrl.eintrag.kommentare"
                        eintrag="$e"
                        on-change="$ctrl.safeToLocal()">

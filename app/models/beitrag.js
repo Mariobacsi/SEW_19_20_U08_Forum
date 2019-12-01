@@ -14,6 +14,11 @@ app.factory("Beitrag", function () {
             return neuerBeitrag;
         }
 
+        this.kommentierenObject = (beitrag) => {
+            this.kommentare.push(beitrag);
+            return beitrag;
+        }
+
         this.setAddKomm = () => {
             this.addkomm = !this.addkomm;
         }
