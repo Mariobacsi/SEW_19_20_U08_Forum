@@ -1,0 +1,8 @@
+#kommentar-section blogkommentar:nth-of-type(2) {
+  background-color: #9e9e9e;
+}
+#kommentar-section blogkommentar:nth-of-type(2) blogkommentar {
+  background-color: white;
+}
+
+/*# sourceMappingURL=app.css.map */
