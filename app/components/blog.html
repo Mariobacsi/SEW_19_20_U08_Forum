@@ -6,9 +6,9 @@
         <h1 ng-bind="$ctrl.eintrag.username"></h1>
         <div layout="row" layout-align="space-between center">
             <p ng-bind="$ctrl.eintrag.text"></p>
-            <md-button class="md-icon-button"
+            <md-button class="md-icon-button md-raised md-primary"
                        ng-click="$ctrl.eintrag.setAddKomm()">
-                <md-icon>comment</md-icon>
+                <md-icon>add</md-icon>
             </md-button>
         </div>
         <addkommentar ng-show="$ctrl.eintrag.addkomm"

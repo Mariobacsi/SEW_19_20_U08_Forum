@@ -4,6 +4,7 @@ app.component("blog", {
     templateUrl: "components/blog.html",
     controller: "BlogController",
     bindings: {
+        storage: "@",
         title: "@",
         text: "@"
     }
@@ -13,7 +14,7 @@ app.component("blog", {
 app.controller("BlogController", function ($log, Beitrag) {
 
     this.$onInit = function () {
-        const data = JSON.parse(localStorage.getItem('Blog'));
+        const data = JSON.parse(localStorage.getItem(this.storage));
         console.log(data);
         if (data != (null, undefined)) {
             console.log("loading from JSON");
@@ -43,7 +44,7 @@ app.controller("BlogController", function ($log, Beitrag) {
     }
 
     this.safeToLocal = () => {
-        localStorage.setItem('Blog', JSON.stringify(this.eintrag));
+        localStorage.setItem(this.storage, JSON.stringify(this.eintrag));
     }
 
     /*this.del = (obj) => {

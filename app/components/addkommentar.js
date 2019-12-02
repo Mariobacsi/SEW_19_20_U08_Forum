@@ -15,20 +15,20 @@ app.controller("AddkommentarController", function ($log) {
 
     this.send = () => {
         $log.debug(this.username + ", " + this.text);
-        if (this.text == null || this.text == undefined || this.text == "") this.text = this.username
+        if (this.text == null || this.text == undefined || this.text == "") this.text = this.username;
         this.onAddKommtentar({
             user: this.username,
             text: this.text
         });
         delete this.username;
-        delete this.text
-        this.formular.$setUntouched()
+        delete this.text;
+        this.formular.$setUntouched();
     };
 
     this.cancel = () => {
         delete this.username;
-        delete this.text
-        this.formular.$setUntouched()
+        delete this.text;
+        this.formular.$setUntouched();
         this.onAddKommtentar();
     };
 
