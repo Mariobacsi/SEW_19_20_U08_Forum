@@ -19,7 +19,7 @@ app.controller("BlogController", function ($log, Beitrag) {
         if (data != (null, undefined)) {
             console.log("loading from JSON");
             this.eintrag = this.loadLocal(data);
-        }else {
+        } else {
             this.eintrag = new Beitrag(this.title, this.text);
         }
         console.log("Init Blog: \n");
@@ -30,7 +30,7 @@ app.controller("BlogController", function ($log, Beitrag) {
         let beitrag = new Beitrag(data.username, data.text);
         data.kommentare.forEach(e => beitrag.kommentierenObject(this.loadLocal(e)));
         return beitrag;
-    }
+    };
 
     this.valAddKomm = (u, t) => {
         if ((u, t) == undefined || (u, t) == "") {
@@ -41,10 +41,20 @@ app.controller("BlogController", function ($log, Beitrag) {
             this.safeToLocal();
         }
         this.eintrag.setAddKomm();
-    }
+    };
 
     this.safeToLocal = () => {
-        localStorage.setItem(this.storage, JSON.stringify(this.eintrag));
+        localStorage.setItem(this.storage, JSON.stringify(this.convertToSimple(this.eintrag)));
+    };
+
+    this.convertToSimple = (obj) => {
+        let beitrag = {
+            username: obj.username,
+            text: obj.text,
+            kommentare: []
+        };
+        obj.kommentare.forEach(e => beitrag.kommentare.push(this.convertToSimple(e)));
+        return beitrag;
     }
 
     /*this.del = (obj) => {
