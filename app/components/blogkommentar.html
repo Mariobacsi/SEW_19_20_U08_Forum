@@ -24,9 +24,8 @@
 </style>
 <div class="eintrag">
     <div class="" layout="row" layout-align="space-between center">
-        <div class="username"
-             ng-bind="$ctrl.eintrag.username">
-        </div>
+        <div class="username" ng-bind="$ctrl.eintrag.username"></div>
+        <div ng-bind="$ctrl.eintrag.date.toLocaleDateString() + ' ' + $ctrl.eintrag.date.toLocaleTimeString()"></div>
         <div>
             <md-button class="md-icon-button"
                        ng-click="$ctrl.eintrag.setAddKomm()">

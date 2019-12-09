@@ -2,14 +2,15 @@
 
 app.factory("Beitrag", function () {
 
-    function Beitrag(username, text) {
+    function Beitrag(username, text, date) {
         this.username = username;
         this.text = text;
         this.addkomm = false;
         this.kommentare = [];
+        this.date = date;
 
-        this.kommentieren = (username, text) => {
-            let neuerBeitrag = new Beitrag(username, text);
+        this.kommentieren = (username, text, date) => {
+            let neuerBeitrag = new Beitrag(username, text, date);
             this.kommentare.push(neuerBeitrag);
             return neuerBeitrag;
         }
