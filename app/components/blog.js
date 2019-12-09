@@ -11,30 +11,20 @@ app.component("blog", {
 });
 
 
-app.controller("BlogController", function ($log, Beitrag) {
+app.controller("BlogController", function ($log, Beitrag, LocaldataService) {
 
     this.$onInit = function () {
         const data = JSON.parse(localStorage.getItem(this.storage));
         console.log(data);
-        if (data !== (null, undefined)) {
+        if (data != (null, undefined)) {
             console.log("loading from JSON");
-            this.eintrag = this.loadLocal(data);
+            this.eintrag = LocaldataService.loadLocal(data);
         } else {
             this.eintrag = new Beitrag(this.title, this.text, new Date());
-            this.safeToLocal();
+            LocaldataService.safeToLocal(this.storage, this.convertToSimple(this.eintrag))
         }
         console.log("Init Blog: \n");
         console.log(this.eintrag);
-    };
-
-    this.loadLocal = (data) => {
-        let beitrag = new Beitrag(data.username, data.text, new Date(data.date));
-        data.kommentare.forEach(e => beitrag.kommentierenObject(this.loadLocal(e)));
-        return beitrag;
-    };
-
-    this.safeToLocal = () => {
-        localStorage.setItem(this.storage, JSON.stringify(this.convertToSimple(this.eintrag)));
     };
 
     this.convertToSimple = (obj) => {
@@ -59,9 +49,14 @@ app.controller("BlogController", function ($log, Beitrag) {
         this.eintrag.setAddKomm();
     };
 
+    this.safeToLocal = () =>{
+        LocaldataService.safeToLocal(this.storage, this.convertToSimple(this.eintrag));
+    };
+
     this.deleteBlog = () =>{
         this.eintrag.kommentare = [];
-        localStorage.removeItem(this.storage);
+        //localStorage.removeItem(this.storage);
+        LocaldataService.deleteLocal(this.storage);
     };
 
 });
