@@ -11,7 +11,7 @@ app.component("blog", {
 });
 
 
-app.controller("BlogController", function ($log, Beitrag, LocaldataService) {
+app.controller("BlogController", function ($log, Beitrag, LocaldataService, DialogService) {
 
     this.$onInit = function () {
         const data = JSON.parse(localStorage.getItem(this.storage));
@@ -55,8 +55,13 @@ app.controller("BlogController", function ($log, Beitrag, LocaldataService) {
 
     this.deleteBlog = () =>{
         this.eintrag.kommentare = [];
-        //localStorage.removeItem(this.storage);
         LocaldataService.deleteLocal(this.storage);
     };
+
+    /*function aktualisieren() {
+        $timeout(aktualisieren, 1000);
+    }
+
+    aktualisieren();*/
 
 });

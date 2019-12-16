@@ -1,7 +1,7 @@
 <div layout-padding>
     <md-card layout-padding class="md-whiteframe-4dp">
         <h1 ng-bind="$ctrl.eintrag.username"></h1>
-        <div ng-bind="$ctrl.eintrag.date.toLocaleDateString() + ' ' + $ctrl.eintrag.date.toLocaleTimeString()"></div>
+        <div ng-bind="$ctrl.eintrag.date.toLocaleDateString() + ' ' + ($ctrl.eintrag.dateCurrent - $ctrl.eintrag.date).toLocaleTimeString()"></div>
         <div layout="row" layout-align="space-between center">
             <p ng-bind="$ctrl.eintrag.text"></p>
             <div layout="row">

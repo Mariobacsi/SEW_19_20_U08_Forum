@@ -29,8 +29,8 @@ app.controller("BlogkommentarController", function ($log, Beitrag) {
         this.onChange();
     };
 
-    /*this.del = (obj) => {
-        this.eintrag.kommentare.remove(obj);
-    }*/
+    this.zeitDiff = () => {
+        return Date.now() - this.eintrag.date;
+    };
 
 });

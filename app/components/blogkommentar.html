@@ -1,6 +1,9 @@
 <style>
-    .username {
+    .monospaced{
         font-family: monospace;
+    }
+
+    .username {
         font-size: 1em;
         font-weight: normal;
         place-self: center;
@@ -24,17 +27,13 @@
 </style>
 <div class="eintrag">
     <div class="" layout="row" layout-align="space-between center">
-        <div class="username" ng-bind="$ctrl.eintrag.username"></div>
-        <div ng-bind="$ctrl.eintrag.date.toLocaleDateString() + ' ' + $ctrl.eintrag.date.toLocaleTimeString()"></div>
-        <div>
+        <div class="username monospaced" ng-bind="$ctrl.eintrag.username"></div>
+        <div layout="row">
+            <div class="monospaced" ng-bind="$ctrl.zeitDiff() | zeitDiff"></div>
             <md-button class="md-icon-button"
                        ng-click="$ctrl.eintrag.setAddKomm()">
                 <md-icon>comment</md-icon>
             </md-button>
-            <!--<md-button class="md-icon-button"
-                       ng-click="$ctrl.deleteSelf($crl.eintrag)">
-                <md-icon>cancel</md-icon>
-            </md-button>-->
         </div>
     </div>
     <p ng-bind="$ctrl.eintrag.text"></p>
@@ -42,7 +41,6 @@
                   on-add-kommtentar="$ctrl.valAddKomm(user, text)">
     </addkommentar>
     <div class="kommSection">
-        <ng-transclude></ng-transclude>
         <blogkommentar ng-repeat="$e in $ctrl.eintrag.kommentare"
                        eintrag="$e"
                        on-change="$ctrl.onChange()"

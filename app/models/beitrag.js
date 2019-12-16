@@ -13,16 +13,16 @@ app.factory("Beitrag", function () {
             let neuerBeitrag = new Beitrag(username, text, date);
             this.kommentare.push(neuerBeitrag);
             return neuerBeitrag;
-        }
+        };
 
         this.kommentierenObject = (beitrag) => {
             this.kommentare.push(beitrag);
             return beitrag;
-        }
+        };
 
         this.setAddKomm = () => {
             this.addkomm = !this.addkomm;
-        }
+        };
     }
 
     return Beitrag;
